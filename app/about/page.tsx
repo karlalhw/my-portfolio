@@ -7,7 +7,7 @@ export default function About() {
         </h1>
         <div className="prose prose-lg dark:prose-invert mx-auto">
           <p>
-            I'm a developer based in Hong Kong with a passion for building useful
+            I&apos;m a developer based in Hong Kong with a passion for building useful
             full-stack applications. I enjoy solving real problems with clean code.
           </p>
           <p>
