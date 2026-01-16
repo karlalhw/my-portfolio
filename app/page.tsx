@@ -1,8 +1,23 @@
 // app/page.tsx
+"use client";
+
 import SkillCard from "@/components/SkillCard";
 import { skills } from "@/data/skills";
+import { useState } from "react";
+import { sendEmail } from "@/actions/sendEmail";
 
 export default function Home() {
+  const [status, setStatus] = useState<{ success?: boolean; error?: string; message?: string } | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleSubmit(formData: FormData) {
+    setIsLoading(true);
+    setStatus(null); // reset previous status
+    const result = await sendEmail(formData);
+    setStatus(result);
+    setIsLoading(false);
+  }
+
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-950">
 
@@ -53,40 +68,59 @@ export default function Home() {
       </section>
 
       {/* 3. Contact Me Section */}
+
       <section className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white">
             Contact Me
           </h2>
+
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
-            Interested in working together or just want to say hi? Reach out!
+            Have a project idea or just want to connect? I'd love to hear from you.
           </p>
 
-          {/* Simple links version – easy & no backend needed */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6 md:gap-10 mb-12">
-            <a
-              href="mailto:your.email@example.com"
-              className="flex items-center justify-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-white hover:bg-blue-700 transition text-lg font-medium"
+          {/* Form with loading & status */}
+          <form action={handleSubmit} className="space-y-6 max-w-lg mx-auto">
+            <input
+              name="name"
+              placeholder="Your Name"
+              required
+              className="w-full px-5 py-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <input
+              name="email"
+              type="email"
+              placeholder="Your Email"
+              required
+              className="w-full px-5 py-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows={5}
+              required
+              className="w-full px-5 py-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"
+            />
+
+            <button
+              type="submit"
+              disabled={isLoading || status?.success}
+              className={`w-full py-4 rounded-full font-medium transition shadow-md hover:shadow-lg
+                ${isLoading ? "bg-blue-400 cursor-wait opacity-70" : "bg-blue-600 hover:bg-blue-700 text-white"}`}
             >
-              <span className="text-xl">✉️</span> Email Me
-            </a>
-            <a
-              href="https://linkedin.com/in/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 rounded-full border-2 border-gray-700 px-8 py-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition text-lg font-medium dark:text-white"
-            >
-              <span className="text-xl">in</span> LinkedIn
-            </a>
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 rounded-full border-2 border-gray-700 px-8 py-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition text-lg font-medium dark:text-white"
-            >
-              <span className="text-xl">🐱</span> GitHub
-            </a>
-          </div>
+              {isLoading ? "Sending..." : status?.success ? "Message Sent!" : "Send Message"}
+            </button>
+
+            {/* Feedback */}
+            {status?.success && (
+              <p className="text-green-600 font-medium mt-4">{status.message}</p>
+            )}
+            {status?.error && (
+              <p className="text-red-600 font-medium mt-4">{status.error}</p>
+            )}
+          </form>
         </div>
       </section>
 
