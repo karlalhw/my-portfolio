@@ -2,14 +2,10 @@
 import {
   GitBranch,
   Server,
-  Code,
   Layout,
   TerminalSquare,
-  Database,
   Cpu,
-  Globe,
   Workflow,
-  Lock,
 } from "lucide-react";
 
 export type Skill = {
