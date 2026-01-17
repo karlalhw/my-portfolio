@@ -76,7 +76,7 @@ export default function Home() {
           </h2>
 
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
-            Have a project idea or just want to connect? I'd love to hear from you.
+            Have a project idea or just want to connect? I&apos;d love to hear from you.
           </p>
 
           {/* Form with loading & status */}
