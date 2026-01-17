@@ -2,6 +2,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import { 
+  Github,
+  Mail,
+  Linkedin
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Karla's Portfolio",
@@ -64,6 +69,38 @@ export default function RootLayout({
 
         {/* Page content */}
         {children}
+        <footer className="border-t border-gray-200 dark:border-gray-800 py-8 bg-white dark:bg-gray-950">
+          <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
+            <p className="mb-4">© {new Date().getFullYear()} Karla Leung.</p>
+            <div className="flex justify-center gap-10 md:gap-12">
+              <a
+                href="mailto:hello@karlalhw.com"
+                className="hover:text-blue-600 transition-colors"
+                aria-label="Email me"
+              >
+                <Mail size={28} strokeWidth={1.5} className="hover:scale-110 transition-transform" />
+              </a>
+              <a
+                href="https://linkedin.com/in/karlalhw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-600 transition-colors"
+                aria-label="LinkedIn profile"
+              >
+                <Linkedin size={28} strokeWidth={1.5} className="hover:scale-110 transition-transform" />
+              </a>
+              <a
+                href="https://github.com/karlalhw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-600 transition-colors"
+                aria-label="GitHub profile"
+              >
+                <Github size={28} strokeWidth={1.5} className="hover:scale-110 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
