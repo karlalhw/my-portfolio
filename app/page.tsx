@@ -5,6 +5,8 @@ import SkillCard from "@/components/SkillCard";
 import { skills } from "@/data/skills";
 import { useState } from "react";
 import { sendEmail } from "@/actions/sendEmail";
+import AnimatedStars from "@/components/AnimatedStars";
+import Particles from "react-tsparticles";
 
 export default function Home() {
   const [status, setStatus] = useState<{ success?: boolean; error?: string; message?: string } | null>(null);
@@ -21,8 +23,8 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-950">
 
-      {/* 1. Hero – your "Hi, I'm K" part – keep or customize */}
-      <section className="flex min-h-[70vh] items-center justify-center text-center px-4 py-20">
+      {/* 1. Hero – your "Hi, I'm Karla" part – keep or customize */}
+      <section className="relative flex min-h-[70vh] items-center justify-center text-center px-4 py-20">
         <div className="max-w-4xl">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
             Hi, I&apos;m Karla
