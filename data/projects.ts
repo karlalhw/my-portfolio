@@ -16,7 +16,7 @@ export const projects: Project[] = [
         tech: ["Python", "bitcoinlib", "Click", "Streamlit", "Blockcypher API"],
         githubUrl: "https://github.com/karlalhw/btc-wallet",
         demoUrl: "https://btc-wallet-demo.streamlit.app/",
-        // imageUrl: "/images/btc-wallet-screenshot.png", // add later
+        imageUrl: "/images/projects/btc-wallet-cover.png",
     }
   // Add more projects here as you build them
 ];
