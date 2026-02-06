@@ -19,7 +19,7 @@ export default function Projects() {
               tech={project.tech}
               githubUrl={project.githubUrl}
               demoUrl={project.demoUrl}
-              // imageUrl={project.imageUrl}
+              imageUrl={project.imageUrl}
             />
           ))}
         </div>
