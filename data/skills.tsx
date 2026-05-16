@@ -1,11 +1,11 @@
 // data/skills.tsx
 import {
   GitBranch,
-  Server,
-  Layout,
   TerminalSquare,
+  Globe,
   Cpu,
-  Workflow,
+  Code,
+  ShoppingCart,
 } from "lucide-react";
 
 export type Skill = {
@@ -14,36 +14,35 @@ export type Skill = {
   description: string;
 };
 
-export const skills: Skill[] = [
+export const skills = [
   {
-    icon: <GitBranch size={40} strokeWidth={1.5} />,
-    name: "Git & GitHub Version Control",
-    description: "Branching strategies, pull requests, GitHub Actions, collaborative workflows, repo management",
-  },
-  {
-    icon: <Server size={40} strokeWidth={1.5} />,
-    name: "Back-End Development",
-    description: "PHP, MySQL databases, Python scripting, REST APIs, authentication, scalable server-side logic",
-  },
-  {
-    icon: <Layout size={40} strokeWidth={1.5} />,
-    name: "Front-End Development",
-    description: "React, Next.js, Tailwind CSS, responsive UI, component architecture, modern JavaScript/TypeScript",
+    icon: <Cpu size={40} strokeWidth={1.5} />,
+    name: "Smart Contracts & Solidity",
+    description: "Developing and testing smart contracts using Solidity and Foundry. Currently building and deploying on Ethereum testnets.",
   },
   {
     icon: <TerminalSquare size={40} strokeWidth={1.5} />,
-    name: "Server Management & Hosting",
-    description: "SSH access, DirectAdmin/cPanel administration, domain setup, deployment, environment configuration",
+    name: "Blockchain Tools",
+    description: "Working with Foundry (forge, cast, anvil) for smart contract development, testing, and deployment.",
   },
   {
-    icon: <Cpu size={40} strokeWidth={1.5} />,
-    name: "Blockchain, Web 3.0 & Fintech",
-    description: "Bitcoin testnet wallets, Solidity exploration, smart contracts, fintech app development, crypto tools",
+    icon: <Globe size={40} strokeWidth={1.5} />,
+    name: "Web3 Frontends",
+    description: "Building decentralized applications with React, Next.js, ethers.js, and wallet connections (MetaMask, etc.).",
   },
   {
-    icon: <Workflow size={40} strokeWidth={1.5} />,
-    name: "Scrum / Agile Methodologies",
-    description: "Sprint planning, daily standups, backlog grooming, team collaboration, iterative delivery",
+    icon: <GitBranch size={40} strokeWidth={1.5} />,
+    name: "Version Control",
+    description: "Proficient with Git & GitHub, including branching, pull requests, and collaborative workflows.",
   },
-  // Add more if you have other skills (e.g. Database Design, API Security, etc.)
+  {
+    icon: <Code size={40} strokeWidth={1.5} />,
+    name: "Full-Stack Development",
+    description: "Building complete web applications using Python, PHP, MySQL, React, and Tailwind CSS.",
+  },
+  {
+    icon: <ShoppingCart size={40} strokeWidth={1.5} />,
+    name: "E-commerce Systems",
+    description: "Built and customized full-stack e-commerce websites using LiteCart (PHP + MySQL) as a base template, including product management and order processing.",
+  },
 ];

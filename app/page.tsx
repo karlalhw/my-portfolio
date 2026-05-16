@@ -3,22 +3,9 @@
 
 import SkillCard from "@/components/SkillCard";
 import { skills } from "@/data/skills";
-import { useState } from "react";
-import { sendEmail } from "@/actions/sendEmail";
-import AnimatedStars from "@/components/AnimatedStars";
-import Particles from "react-tsparticles";
+import HomeContactForm from "@/components/HomeContactForm";
 
 export default function Home() {
-  const [status, setStatus] = useState<{ success?: boolean; error?: string; message?: string } | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  async function handleSubmit(formData: FormData) {
-    setIsLoading(true);
-    setStatus(null); // reset previous status
-    const result = await sendEmail(formData);
-    setStatus(result);
-    setIsLoading(false);
-  }
 
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-950">
@@ -27,10 +14,10 @@ export default function Home() {
       <section className="relative flex min-h-[70vh] items-center justify-center text-center px-4 py-20">
         <div className="max-w-4xl">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-            Hi, I&apos;m Karla
+            Karla Leung
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
-            Full-stack developer crafting tools with PHP, Python, Next.js & more
+            Web3 Full-Stack Developer
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
             <a
@@ -81,48 +68,7 @@ export default function Home() {
             Have a project idea or just want to connect? I&apos;d love to hear from you.
           </p>
 
-          {/* Form with loading & status */}
-          <form action={handleSubmit} className="space-y-6 max-w-lg mx-auto">
-            <input
-              name="name"
-              placeholder="Your Name"
-              required
-              className="w-full px-5 py-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-
-            <input
-              name="email"
-              type="email"
-              placeholder="Your Email"
-              required
-              className="w-full px-5 py-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows={5}
-              required
-              className="w-full px-5 py-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"
-            />
-
-            <button
-              type="submit"
-              disabled={isLoading || status?.success}
-              className={`w-full py-4 rounded-full font-medium transition shadow-md hover:shadow-lg
-                ${isLoading ? "bg-blue-400 cursor-wait opacity-70" : "bg-blue-600 hover:bg-blue-700 text-white"}`}
-            >
-              {isLoading ? "Sending..." : status?.success ? "Message Sent!" : "Send Message"}
-            </button>
-
-            {/* Feedback */}
-            {status?.success && (
-              <p className="text-green-600 font-medium mt-4">{status.message}</p>
-            )}
-            {status?.error && (
-              <p className="text-red-600 font-medium mt-4">{status.error}</p>
-            )}
-          </form>
+          <HomeContactForm />
         </div>
       </section>
 
