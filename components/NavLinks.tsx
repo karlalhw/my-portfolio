@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
 import { ChevronDown } from 'lucide-react';
 
 const cls = "text-purple-400 hover:text-purple-200 transition text-sm tracking-widest uppercase font-mono";
@@ -37,7 +38,18 @@ export default function NavLinks() {
   return (
     <ul className="flex items-center justify-center gap-10">
       <li className="flex items-center gap-1">
-        <Link href="/" className={cls}>Home</Link>
+        <a
+          href="/"
+          className={cls}
+          onClick={(e) => {
+            if (pathname === '/') {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+        >
+          Home
+        </a>
         <ChevronDown size={12} className="text-purple-400 mt-0.5" />
       </li>
       <li>
