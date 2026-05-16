@@ -5,10 +5,10 @@ import Link from "next/link";
 interface ProjectCardProps {
   title: string;
   description: string;
-  tech: string[];               // array of tech badges
-  imageUrl?: string;            // optional screenshot
+  tech: string[];
+  imageUrl?: string;
   githubUrl?: string;
-  demoUrl?: string;             // e.g. "/cashflo" or external
+  demoUrl?: string;
 }
 
 export default function ProjectCard({
@@ -20,9 +20,9 @@ export default function ProjectCard({
   demoUrl,
 }: ProjectCardProps) {
   return (
-    <div className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-blue-500 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-400">
-      {/* Image / Placeholder */}
-      <div className="mb-5 aspect-video overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+    <div className="group flex flex-col rounded-lg bg-[#0f0f18] border border-purple-900/30 hover:border-purple-500/50 transition-all duration-200 overflow-hidden">
+      {/* Image */}
+      <div className="aspect-video overflow-hidden bg-[#0a0a12]">
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -32,53 +32,55 @@ export default function ProjectCard({
             className="h-full w-full object-cover transition-transform group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-gray-400">
-            Project Screenshot Coming Soon
+          <div className="flex h-full items-center justify-center text-purple-900/50 text-xs font-mono">
+            [ no preview ]
           </div>
         )}
       </div>
 
-      {/* Title & Description */}
-      <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
-        {title}
-      </h3>
-      <p className="mb-5 text-gray-600 dark:text-gray-300">
-        {description}
-      </p>
+      {/* Content */}
+      <div className="flex flex-col flex-1 p-4 gap-3">
+        <h3 className="text-sm font-bold text-white font-mono leading-snug">
+          {title}
+        </h3>
 
-      {/* Tech badges */}
-      <div className="mb-6 flex flex-wrap gap-2">
-        {tech.map((item) => (
-          <span
-            key={item}
-            className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
+        <p className="text-xs text-slate-400 font-mono leading-relaxed flex-1">
+          {description}
+        </p>
 
-      {/* Links */}
-      <div className="flex flex-wrap gap-4">
-        {githubUrl && (
-          <Link
-            href={githubUrl}
-            target="_blank"
-            className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
-          >
-            View Code →
-          </Link>
-        )}
+        {/* Tech badges */}
+        <div className="flex flex-wrap gap-1.5">
+          {tech.map((item) => (
+            <span
+              key={item}
+              className="rounded px-2 py-0.5 text-xs font-mono bg-purple-950/50 text-purple-300/80 border border-purple-900/40"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
 
-        {demoUrl && (
-          <Link
-            href={demoUrl}
-            target={demoUrl.startsWith("http") ? "_blank" : undefined}
-            className="rounded-md bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-700 transition"
-          >
-            Live Demo →
-          </Link>
-        )}
+        {/* Links */}
+        <div className="flex flex-wrap gap-2 pt-1">
+          {githubUrl && (
+            <Link
+              href={githubUrl}
+              target="_blank"
+              className="rounded px-3 py-1.5 text-xs font-mono bg-purple-600 hover:bg-purple-500 text-white transition-colors"
+            >
+              View on GitHub
+            </Link>
+          )}
+          {demoUrl && (
+            <Link
+              href={demoUrl}
+              target={demoUrl.startsWith("http") ? "_blank" : undefined}
+              className="rounded px-3 py-1.5 text-xs font-mono border border-purple-600 text-purple-300 hover:bg-purple-900/40 transition-colors"
+            >
+              Live Demo
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
