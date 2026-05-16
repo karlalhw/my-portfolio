@@ -59,7 +59,7 @@ export default function NavLinks() {
         <Link href="/projects" className={cls}>Projects</Link>
       </li>
       <li>
-        <Link href="/about" className={cls}>Experience</Link>
+        <Link href="/about" className={cls}>About Me</Link>
       </li>
       <li>
         <Link href="/contact" className={cls}>Contact</Link>
