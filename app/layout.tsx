@@ -21,7 +21,7 @@ export default function RootLayout({
         <NetworkBackground />
 
         {/* Navbar */}
-        <header className="sticky top-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-md border-b border-purple-900/20">
+        <header className="sticky top-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-md border-b border-purple-900/20 relative">
           <nav className="container mx-auto px-6 py-5">
             <NavLinks />
           </nav>
