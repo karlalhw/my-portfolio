@@ -17,10 +17,10 @@ export default function Home() {
             KARLA LEUNG
           </h1>
           <p className="text-xl md:text-2xl text-white font-semibold mb-4 tracking-wide">
-            Web3 Full-Stack Developer,
+            Full-Stack Developer,
           </p>
           <p className="text-sm md:text-base text-slate-400 font-mono tracking-wider">
-            Building the Decentralized Future.
+            React · Next.js · PHP · Python
           </p>
         </div>
       </section>

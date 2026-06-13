@@ -31,26 +31,26 @@ export default function About() {
             {/* Text content */}
             <div className="flex-1 space-y-8">
               <p>
-                Hi, I&apos;m <strong className="text-white">Karla</strong>, a full-stack and Web3 developer based in <strong className="text-white">Hong Kong</strong>.
+                Hi, I&apos;m <strong className="text-white">Karla</strong>, a full-stack developer based in <strong className="text-white">Hong Kong</strong>.
               </p>
 
               <p>
-                My journey started at age 16 when I built and maintained a full-stack e-commerce website for my family using PHP, MySQL, and HTML/CSS. That early experience taught me the value of clean, functional systems and sparked my love for development.
+                My journey started at age 16 when I built and maintained a full e-commerce website for my family — custom login/register system in PHP, MySQL database, Stripe payments, product listings, and ongoing maintenance. Working on a live production site early on shaped how I think about building software.
               </p>
 
               <p>
-                Today, I&apos;m deeply passionate about <strong>Web3 and decentralized technologies</strong>. I spend most of my time learning and building with <strong>Solidity</strong> and <strong>Foundry</strong>, writing and testing smart contracts, while creating modern frontends using <strong>React</strong>, <strong>Next.js</strong>, and <strong>Tailwind CSS</strong>. I enjoy connecting traditional web development with blockchain to build useful decentralized applications.
+                Today I build across the full stack — <strong className="text-white">React</strong>, <strong className="text-white">Next.js</strong>, and <strong className="text-white">Tailwind CSS</strong> on the frontend, <strong className="text-white">PHP</strong> and <strong className="text-white">MySQL</strong> on the backend, and <strong className="text-white">Python</strong> for scripting and automation. I care about clean, consistent UI and getting the details right.
               </p>
 
               <p>
-                I&apos;m particularly excited about the potential of blockchain to create more transparent, secure, and user-owned systems. Whether it&apos;s writing secure smart contracts or building intuitive Web3 interfaces, I love turning complex ideas into working products.
+                I&apos;ve also been learning blockchain development — building and deploying smart contracts with <strong>Solidity</strong> and <strong>Foundry</strong> on Ethereum testnets, and a Bitcoin testnet wallet in Python. Still early in that journey, but I enjoy the challenge.
               </p>
 
               <ul className="list-disc pl-6 space-y-3">
-                <li>Smart contract development with Solidity &amp; Foundry</li>
-                <li>Building Web3 frontends (React + Next.js + ethers/viem)</li>
-                <li>Full-stack development (Python, PHP, MySQL, React, Tailwind)</li>
-                <li>Version control and collaborative workflows with Git &amp; GitHub</li>
+                <li>Full-stack development (React, Next.js, Tailwind CSS, PHP, MySQL, Python)</li>
+                <li>E-commerce systems (LiteCart, Stripe, phpMyAdmin)</li>
+                <li>Smart contract development (Solidity, Foundry, OpenZeppelin)</li>
+                <li>Version control and collaborative workflows (Git &amp; GitHub)</li>
               </ul>
             </div>
 
