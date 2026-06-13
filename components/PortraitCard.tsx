@@ -120,7 +120,7 @@ export default function PortraitCard() {
       {/* Portrait image */}
       <div className="relative w-full h-full" style={{ minHeight: '400px' }}>
         <Image
-          src="/images/karla-portrait-nobg-clean.png"
+          src="/images/karla-portrait-nobg-clean.webp"
           alt="Karla"
           fill
           className="object-cover object-top z-10"
