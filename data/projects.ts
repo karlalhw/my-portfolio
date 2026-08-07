@@ -36,6 +36,14 @@ export const projects: Project[] = [
     imageUrl: "/images/projects/btc-wallet-cover.webp",
   },
   {
+    title: "Task Manager",
+    description:
+      "Full-stack task manager built with ASP.NET Core MVC and Entity Framework Core. Supports creating, editing, and deleting tasks with title, description, due date, status, and priority. Bootstrap 5 UI with a striped table view.",
+    tech: ["C#", "ASP.NET Core MVC", "Entity Framework Core", "SQL Server", "Bootstrap 5"],
+    githubUrl: "https://github.com/karlalhw/task-manager",
+    imageUrl: "/images/projects/task-manager-cover.png",
+  },
+  {
     title: "Ethereum Smart Contracts",
     description:
       "ERC-20 token and NFT collection built from scratch and deployed on Sepolia testnet. Written in Solidity with Foundry for testing and deployment.",

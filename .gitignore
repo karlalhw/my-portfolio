@@ -12,3 +12,7 @@ node_modules/
 # Logs & temp
 *.log
 next-build.zip
+
+# Auto-generated
+next-env.d.ts
+tsconfig.tsbuildinfo
