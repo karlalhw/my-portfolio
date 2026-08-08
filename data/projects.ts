@@ -12,8 +12,8 @@ export const projects: Project[] = [
   {
     title: "Portfolio Website",
     description:
-      "Personal portfolio built with React, Next.js, and Tailwind CSS. Features an animated particle background, responsive design, hover animations, and a live project showcase.",
-    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "tsParticles"],
+      "Personal portfolio built with React, Next.js, and Tailwind CSS. Responsive design with animated aurora background and smooth scrolling with Lenis.",
+    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Lenis"],
     githubUrl: "https://github.com/karlalhw/my-portfolio",
     demoUrl: "https://karlalhw.com",
     imageUrl: "/images/projects/portfolio-cover.webp",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "Full-stack task manager built with ASP.NET Core MVC and Entity Framework Core. Supports creating, editing, and deleting tasks with title, description, due date, status, and priority. Bootstrap 5 UI with a striped table view.",
     tech: ["C#", "ASP.NET Core MVC", "Entity Framework Core", "SQL Server", "Bootstrap 5"],
     githubUrl: "https://github.com/karlalhw/task-manager",
-    imageUrl: "/images/projects/task-manager-cover.png",
+    imageUrl: "/images/projects/task-manager-cover.webp",
   },
   {
     title: "Ethereum Smart Contracts",

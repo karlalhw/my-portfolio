@@ -241,7 +241,7 @@ function HomeInner() {
                 smart contracts on Ethereum testnets with <strong>Solidity</strong> and{" "}
                 <strong>Foundry</strong>, and built a non-custodial Bitcoin wallet in Python.
               </p>
-              <p>Currently looking for junior developer roles or internships in Hong Kong or remote.</p>
+              <p>Currently looking for junior developer roles or internships in Hong Kong, Shenzhen, or remote.</p>
             </div>
             <button className="cta-scroll" onClick={() => scrollToSection("experience")}>
               <span className="cta-scroll-label">Explore my work</span>
