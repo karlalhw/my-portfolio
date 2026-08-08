@@ -1,0 +1,40 @@
+# deploy.ps1 — Build and deploy karlalhw.com portfolio
+# Usage: .\deploy.ps1
+
+$username = Read-Host "SSH username"
+$ip       = Read-Host "Server IP"
+
+$remote     = "${username}@${ip}"
+$serverPath = "domains/karlalhw.com/public_html/my-portfolio"
+$zipName    = "next-build.zip"
+
+# ── 1. Build ────────────────────────────────────────────────────────────────
+Write-Host "`nBuilding..." -ForegroundColor Cyan
+npm run build
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Build failed. Aborting." -ForegroundColor Red
+    exit 1
+}
+
+# ── 2. Package ──────────────────────────────────────────────────────────────
+Write-Host "`nPackaging .next/ and public/..." -ForegroundColor Cyan
+if (Test-Path $zipName) { Remove-Item $zipName }
+Compress-Archive -Path ".next", "public" -DestinationPath $zipName
+
+# ── 3. Clear old .next on server ────────────────────────────────────────────
+Write-Host "`nRemoving old .next on server..." -ForegroundColor Cyan
+ssh $remote "rm -rf $serverPath/.next"
+
+# ── 4. Upload ────────────────────────────────────────────────────────────────
+Write-Host "`nUploading $zipName..." -ForegroundColor Cyan
+scp $zipName "${remote}:${serverPath}/"
+
+# ── 5. Extract and clean up on server ───────────────────────────────────────
+Write-Host "`nExtracting on server..." -ForegroundColor Cyan
+ssh $remote "cd $serverPath && unzip -o $zipName && rm $zipName"
+
+# ── 6. Clean up local zip ───────────────────────────────────────────────────
+Write-Host "`nCleaning up local zip..." -ForegroundColor Cyan
+Remove-Item $zipName
+
+Write-Host "`nDone! Restart the Node.js app in DirectAdmin to apply changes." -ForegroundColor Green
