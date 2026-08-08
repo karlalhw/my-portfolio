@@ -21,17 +21,13 @@ Write-Host "`nPackaging .next/ and public/..." -ForegroundColor Cyan
 if (Test-Path $zipName) { Remove-Item $zipName }
 Compress-Archive -Path ".next", "public" -DestinationPath $zipName
 
-# ── 3. Clear old .next on server ────────────────────────────────────────────
-Write-Host "`nRemoving old .next on server..." -ForegroundColor Cyan
-ssh $remote "rm -rf $serverPath/.next"
-
-# ── 4. Upload ────────────────────────────────────────────────────────────────
-Write-Host "`nUploading $zipName..." -ForegroundColor Cyan
+# ── 3. Upload ────────────────────────────────────────────────────────────────
+Write-Host "`nUploading $zipName... (password prompt 1 of 2)" -ForegroundColor Cyan
 scp $zipName "${remote}:${serverPath}/"
 
-# ── 5. Extract and clean up on server ───────────────────────────────────────
-Write-Host "`nExtracting on server..." -ForegroundColor Cyan
-ssh $remote "cd $serverPath && unzip -o $zipName && rm $zipName"
+# ── 4. Clear old .next, extract, and clean up on server (single SSH session) ─
+Write-Host "`nDeploying on server... (password prompt 2 of 2)" -ForegroundColor Cyan
+ssh $remote "rm -rf $serverPath/.next && cd $serverPath && unzip -o $zipName && rm $zipName"
 
 # ── 6. Clean up local zip ───────────────────────────────────────────────────
 Write-Host "`nCleaning up local zip..." -ForegroundColor Cyan
