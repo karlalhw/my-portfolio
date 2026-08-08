@@ -5,7 +5,7 @@ $username    = Read-Host "SSH username"
 $ip          = Read-Host "Server IP"
 
 $remote      = "${username}@${ip}"
-$serverPath  = "domains/karlalhw.com/public_html/my-portfolio"
+$serverPath  = Read-Host "Server path (e.g. domains/yourdomain.com/public_html/my-portfolio)"
 $archiveName = "next-build.tar.gz"
 
 # ── 1. Build ────────────────────────────────────────────────────────────────

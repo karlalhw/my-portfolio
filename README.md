@@ -41,23 +41,37 @@ npm run build
 
 ## Deployment
 
-Hosted on EVO shared hosting with DirectAdmin. Runs as a Node.js application via `server.js`.
+Hosted on EVO shared hosting with DirectAdmin. Runs as a Node.js application.
 
-**To deploy after changes:**
+A deploy script is included for Windows. It builds the project, packages `.next/` and `public/` (excluding the build cache), uploads to the server, and extracts in place.
 
-1. Build locally: `npm run build`
-2. Zip the `.next/` folder:
-   ```powershell
-   Compress-Archive -Path ".next" -DestinationPath "next-build.zip" -Force
-   ```
-3. SCP the zip to the server
-4. SSH in, navigate to the app directory, then:
-   ```bash
-   rm -rf .next
-   unzip next-build.zip
-   chmod -R 755 .next
-   ```
-5. Restart the Node.js app from DirectAdmin
+**Requirements:** Windows 10+, OpenSSH, Node.js, `tar` (built into Windows 10+)
+
+**Usage:**
+
+```powershell
+.\deploy.ps1
+```
+
+You will be prompted for:
+- SSH username
+- Server IP
+- Server path (e.g. `domains/yourdomain.com/public_html/my-portfolio`)
+
+After the script completes, **restart the Node.js app** from the DirectAdmin panel.
+
+**Works with any Next.js app** hosted on EVO/DirectAdmin (or any Linux shared host with SSH access and `tar`/`unzip` available). Just adjust the server path when prompted.
+
+**Manual steps if not on Windows:**
+
+```bash
+npm run build
+tar -czf next-build.tar.gz --exclude='.next/cache' .next public
+scp next-build.tar.gz user@ip:domains/yourdomain.com/public_html/my-app/
+ssh user@ip "rm -rf domains/.../.next && cd domains/.../my-app && tar -xzf next-build.tar.gz && rm next-build.tar.gz"
+```
+
+Then restart the Node.js app from DirectAdmin.
 
 ## Environment Variables
 
